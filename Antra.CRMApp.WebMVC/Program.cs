@@ -12,6 +12,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSqlServer<CrmDbContext>(builder.Configuration.GetConnectionString("OnlineCRM"));
 builder.Services.AddScoped<IEmployeeRepositoryAsync, EmployeeRepositoryAsync>();
 builder.Services.AddScoped<IRegionRepositoryAsync, RegionRepositoryAsync>();
+builder.Services.AddScoped<IProductRepositoryAsync, ProductRepositoryAsync>();
 
 
 
@@ -20,6 +21,7 @@ builder.Services.AddScoped<IRegionRepositoryAsync, RegionRepositoryAsync>();
 //depedency injection for services
 builder.Services.AddScoped<IEmployeeServiceAsync, EmployeeServiceAsync>();
 builder.Services.AddScoped<IRegionServiceAsync, RegionServiceAsync>();
+builder.Services.AddScoped<IProductServiceAsync, ProductServiceAsync>();
 
 var app = builder.Build();
 

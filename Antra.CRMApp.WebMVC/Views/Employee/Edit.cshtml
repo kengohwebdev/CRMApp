@@ -2,8 +2,21 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @model EmployeeRequestModel
-<form asp-controller="Employee" asp-action="Create" method="post">
-    <h1 class="display-6">Add New Employee</h1>
+
+   @if (ViewBag.IsEdit==true)
+{
+    
+    
+        <div class="container">
+            <di class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Employee Updated Successfully. Go to <a asp-action="Index" asp-controller="Employee" >Index</a> </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+}
+
+
+<form asp-controller="Employee" asp-action="Edit" method="post" >
+    <h1 class="display-6">Edit Employee</h1>
     <hr/>
 <div class="container">
     <div class="row">
@@ -119,7 +132,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <input type="submit" value="Add Employee" class="btn btn-primary" />
+            <input type="submit" value="Edit Employee" class="btn btn-primary" />
         </div>
     </div>
 </div>

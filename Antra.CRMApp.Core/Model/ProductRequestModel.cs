@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace Antra.CRMApp.Core.Entity
+
+namespace Antra.CRMApp.Core.Model
 {
-    public class Product
+    public class ProductRequestModel
     {
         public int Id { get; set; }
         [Required]
-        [Column(TypeName ="varchar(30)")]
+        [Column(TypeName = "varchar(30)")]
         public string Name { get; set; }
 
         [Required]
@@ -31,8 +32,5 @@ namespace Antra.CRMApp.Core.Entity
         public int ReorderLevel { get; set; }
         [Required]
         public bool Discontinued { get; set; }
-
-        public Vendor Vendor { get; set; }
-        public Category Category { get; set; }
     }
 }

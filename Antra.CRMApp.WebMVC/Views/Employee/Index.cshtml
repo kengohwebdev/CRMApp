@@ -1,22 +1,16 @@
 ﻿@model IEnumerable<EmployeeResponseModel>
 
-<div class="container">
-    <a asp-action="Create" asp-controller="Employee" class="bg-success btn" >Add Employee</a>
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col mb-3">
-            <div class="card" style="width: 18rem;">
-                <img src="@item.PhotoPath" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">@item.FullName</h5>
-                    <p class="card-text">@item.Address</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            </div>
-        }
+    
 
-    </div>
+            
 
-</div>
+            <a asp-action="Create" asp-controller="Employee" class="bg-success btn">Add Employee</a>
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <partial name="_EmployeeCard" model="@item"></partial>
+                }
+
+            </div>
+
+        

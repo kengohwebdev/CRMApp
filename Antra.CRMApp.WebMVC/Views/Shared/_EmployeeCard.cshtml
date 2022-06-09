@@ -1,0 +1,13 @@
+﻿@model EmployeeResponseModel
+
+<div class="col mb-3">
+            <div class="card" style="width: 18rem;">
+                <img src="@Model.PhotoPath" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.FullName</h5>
+                    <p class="card-text">@Model.Address</p>
+                    <a asp-action="Edit" asp-controller="Employee" asp-route-id="@Model.Id"  class="btn btn-primary">Edit</a>
+                <a class="btn bg-danger" asp-action="Delete" asp-controller="Employee" asp-route-id="@Model.Id" >Delete</a>
+                </div>
+            </div>
+            </div>
