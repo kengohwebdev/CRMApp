@@ -1,0 +1,46 @@
+What is the difference between IList, IEnumerable and IQueryable?
+
+IEnumerable: Can iterate the collection of objects which deals with in-process memory.
+IQueryable: Can iterate a collection of objects and useful when dealing with queries from database like SQL server.
+IList: Can perform any operation like Add, Remove or Get item at specific index in the collection.
+
+What is the difference between IList, IEnumerable?
+
+Both IList and IEnumerable can query data from in-memory collections like List and Array.
+IEnumerable inherits from IList.
+
+
+IEnumerable can find out the number of elements after iterating the collection. 
+IEnumerable supports deferred execution and further filtering.
+However, it doesnt support Add, Remove or Get like IList.
+
+IList is used to access an element in a specific index in a list, 
+it can find out the number of elements in the list without iterating the collection.
+However, it doesn't support deferred execution and further filtering.
+
+IList<T> is a generic collection which resides in System.Collections.Generic namespace
+and allows us to add a new item to the list and remove items or get items from a specific index position.
+
+
+
+
+What is the difference between IEnumerable and IQueryable?
+
+Both IEnumerable and IQueryableb are interfaces to .Net Collections.
+IQueryable inerits from IEnumerable, IQueryable can do what IEnumerable can do but not necessary the other way around.
+
+The biggest difference between IQueryable and Ienumerable is where the filter logic gets executed.
+
+IEnumerable is fetching all the records from the SQL server database table
+and then the filter is being applied on the client side.
+
+While in IQueryable, the filter gets applied on the SQL Server 
+and only the necessary data is sent to the client side.
+
+In other words, when working with in memory data collection, which means hat collection has no connection with SQL server,
+then it is better to use IEnumerable.
+
+But if we are working with collections which are connected to database,
+then IQueryable is the better choice as it will reduce network traffic by utilizing SQL.
+
+ IQueryable exists in System.Linq Namespace while IEnumerable exists in System.Collections Namespace.
