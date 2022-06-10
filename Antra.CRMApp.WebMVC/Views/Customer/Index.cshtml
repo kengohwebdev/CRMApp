@@ -1,0 +1,12 @@
+﻿@model IEnumerable<CustomerResponseModel>
+
+ <a asp-action="Create" asp-controller="Customer" class="bg-success btn">Add Customer</a>
+   <div class="row">
+   @foreach (var item in Model)
+    {
+    <partial name="_CustomerCard" model="@item"></partial>
+    }
+
+ </div>
+
+        
