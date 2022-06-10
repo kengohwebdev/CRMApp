@@ -8,50 +8,45 @@ namespace Antra.CRMApp.WebMVC.Controllers
 {
     public class CategoryController : Controller
     {
-     
 
-        public IActionResult Index()
+        private readonly ICategoryServiceAsync categoryServiceAsync;
+        public CategoryController(ICategoryServiceAsync ser)
         {
-            List<Category> category = new List<Category>();
-            category.Add(new Category() { Id = 1, Name = "Laptop", Description = "Silver, Price = 2000" });
-            category.Add(new Category() { Id = 2, Name = "Iphone", Description = "Black, Price = 1000" });
-            category.Add(new Category() { Id = 3, Name = "Samsung Galaxy", Description = "Blue, Price = 900" });
-            category.Add(new Category() { Id = 4, Name = "Chair", Description = "Wooden, Price = 120" });
-            category.Add(new Category() { Id = 5, Name = "Table", Description = "White, Price = 250" });
-
-            ViewData["Title"] = "Category/Index";
-            return View(category);
+            categoryServiceAsync = ser;
         }
+        /* public IActionResult Index()
+         {
+             List<Category> category = new List<Category>();
+             category.Add(new Category() { Id = 1, Name = "Laptop", Description = "Silver, Price = 2000" });
+             category.Add(new Category() { Id = 2, Name = "Iphone", Description = "Black, Price = 1000" });
+             category.Add(new Category() { Id = 3, Name = "Samsung Galaxy", Description = "Blue, Price = 900" });
+             category.Add(new Category() { Id = 4, Name = "Chair", Description = "Wooden, Price = 120" });
+             category.Add(new Category() { Id = 5, Name = "Table", Description = "White, Price = 250" });
 
-
-
-        public IActionResult Detail()
+             ViewData["Title"] = "Category/Index";
+             return View(category);
+         }*/
+        public async Task<IActionResult> Index()
         {
-            ViewData["Title"] = "Category/Details";
-            return View("explain");
+            var result = await categoryServiceAsync.GetAllAsync();
+            return View(result);
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             return View();
         }
-
-
         [HttpPost]
-        public IActionResult Create(Category category)
+        public async Task<IActionResult> Create(CategoryModel model)
         {
             if (ModelState.IsValid)
             {
+                await categoryServiceAsync.AddCategoryAsync(model);
                 return RedirectToAction("Index");
             }
-            return View(category);
 
-        }
-
-        public IActionResult Edit(int id)
-        {
-            return View();
+            return View(model);
         }
     }
 }

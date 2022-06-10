@@ -9,5 +9,6 @@ namespace Antra.CRMApp.Core.Contract.Repository
 {
     public interface ICategoryRepositoryAsync : IRepositoryAsync<Category>
     {
+       
     }
 }

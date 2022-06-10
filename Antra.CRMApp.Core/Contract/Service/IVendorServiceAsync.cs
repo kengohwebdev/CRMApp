@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace Antra.CRMApp.Core.Contract.Service
 {
-    public class IVendorServiceAsync
+    public interface IVendorServiceAsync
     {
+        Task<IEnumerable<VendorModel>> GetAllAsync();
+        Task<int> AddVendorAsync(VendorModel model);
     }
 }

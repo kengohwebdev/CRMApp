@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace Antra.CRMApp.Core.Contract.Service
 {
-    public class IShipperServiceAsync
+    public interface IShipperServiceAsync
     {
+        Task<IEnumerable<ShipperModel>> GetAllAsync();
+        Task<int> AddShipperAsync(ShipperModel model);
     }
 }

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ShipperModel>
+<a asp-action="Create" asp-controller="Shipper" class="btn bg-success" >Add Shipper</a>
+<table class="table table-striped">
+  <thead>
+      <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Phone</th
+      </tr>
+  </thead>
+  <tbody>
+      @foreach(var s in Model)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Name</td>
+                <td>@s.Phone</td>
+            </tr>
+        }
+    </tbody>
+</table>

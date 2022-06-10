@@ -18,31 +18,75 @@ namespace Antra.CRMApp.Infrastructure.Service
             categoryRepositoryAsync = _categoryRepositoryAsync;
         }
 
-        public async Task<int> AddCategoryAsync(CategoryModel model)
-            {
-                Category category = new Category();
-                category.Name = model.Name;
-                return await categoryRepositoryAsync.InsertAsync(category);
-            }
+        public async Task<int> AddCategoryAsync(CategoryModel category)
+        {
+            Category cat = new Category();
+            cat.Id = category.Id;
+            cat.Name = category.Name;
+            cat.Description = category.Description;
+            return await categoryRepositoryAsync.InsertAsync(cat);
+        }
 
-            public async Task<IEnumerable<CategoryModel>> GetAllAsync()
+        public async Task<int> DeleteCategoryAsync(int id)
+        {
+            return await categoryRepositoryAsync.DeleteAsync(id);
+        }
+
+        public async Task<IEnumerable<CategoryModel>> GetAllAsync()
+        {
+            var collection = await categoryRepositoryAsync.GetAllAsync();
+
+            if (collection != null)
             {
-                var collection = await categoryRepositoryAsync.GetAllAsync();
-                if (collection != null)
+                List<CategoryModel> result = new List<CategoryModel>();
+                foreach (var item in collection)
                 {
-                    List<CategoryModel> categoryModels = new List<CategoryModel>();
-                    foreach (var item in collection)
-                    {
-                        CategoryModel model = new CategoryModel();
-                        model.Name = item.Name;
-                        model.Id = item.Id;
-                        model.Description=item.Description;
-                    
-                        categoryModels.Add(model);
-                    }
-                    return categoryModels;
+                    CategoryModel model = new CategoryModel();
+                    model.Id = item.Id;
+                    model.Name = item.Name;
+                    model.Description = item.Description;
+                    result.Add(model);
                 }
-                return null;
+                return result;
             }
+            return null;
+        }
+
+        public async Task<CategoryModel> GetByIdAsync(int id)
+        {
+            var item = await categoryRepositoryAsync.GetByIdAsync(id);
+            if (item != null)
+            {
+                CategoryModel model = new CategoryModel();
+                model.Id = item.Id;
+                model.Name = item.Name;
+                model.Description = item.Description;
+                return model;
+            }
+            return null;
+        }
+
+        public async Task<CategoryModel> GetEmployeeForEditAsync(int id)
+        {
+            var item = await categoryRepositoryAsync.GetByIdAsync(id);
+            if (item != null)
+            {
+                CategoryModel model = new CategoryModel();
+                model.Id = item.Id;
+                model.Name = item.Name;
+                model.Description = item.Description;
+                return model;
+            }
+            return null;
+        }
+
+        public async Task<int> UpdateCategoryAsync(CategoryModel category)
+        {
+            Category cat = new Category();
+            cat.Id = category.Id;
+            cat.Name = category.Name;
+            cat.Description = category.Description;
+            return await categoryRepositoryAsync.UpdateAsync(cat);
         }
     }
+}
