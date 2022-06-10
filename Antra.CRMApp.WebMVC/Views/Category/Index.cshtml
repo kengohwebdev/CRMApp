@@ -1,0 +1,30 @@
+﻿@model IEnumerable<CategoryModel>
+
+<h1>Category index</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach(var c in Model)
+            {
+               <tr>
+               <td>@c.Id</td>
+               <td>@c.Name</td>
+               <td>@c.Description</td>
+               <td>
+               <span>
+               <a asp-controller="Category" asp-action="Edit" asp-route-id="@c.Id" >Edit</a>
+               </span>
+               </td>
+               </tr> 
+
+            }
+        }
+    </tbody>
+</table>

@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace Antra.CRMApp.Core.Entity
+using System.ComponentModel.DataAnnotations;
+using Antra.CRMApp.Core.Entity;
+
+namespace Antra.CRMApp.Core.Model
 {
-    public class Category
+    public class CategoryModel
     {
         public int Id { get; set; }
-        [Required, Column(TypeName = "varchar")]
-        [MaxLength(20)]
-        public string Name { get; set; }
 
+        [Required(ErrorMessage = "Name is Required")]
+        [Display(Name = "Enter Name")]
+        public string Name { get; set; }
 
         [Required, Column(TypeName = "varchar")]
         [MaxLength(80)]

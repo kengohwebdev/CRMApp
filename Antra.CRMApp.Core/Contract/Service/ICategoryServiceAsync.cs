@@ -9,7 +9,8 @@ namespace Antra.CRMApp.Core.Contract.Service
 {
     public interface ICategoryServiceAsync
     {
-    
+        Task<IEnumerable<CategoryModel>> GetAllAsync();
+        Task<int> AddCategoryAsync(CategoryModel model);
 
 
     }

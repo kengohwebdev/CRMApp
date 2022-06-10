@@ -17,11 +17,11 @@ namespace Antra.CRMApp.WebMVC.Controllers
             return View(result);
         }
 
-       /* [HttpGet]
+        [HttpGet]
         public async Task<IActionResult> Create()
         {
             return View();
-        }*/
+        }
         [HttpPost]
         public async Task<IActionResult> Create(RegionModel model)
         {
