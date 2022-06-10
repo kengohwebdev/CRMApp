@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Antra.CRMApp.Infrastructure.Migrations
 {
     [DbContext(typeof(CrmDbContext))]
-    [Migration("20220608193650_datatablecreation")]
-    partial class datatablecreation
+    [Migration("20220609175758_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -144,7 +144,7 @@ namespace Antra.CRMApp.Infrastructure.Migrations
 
                     b.Property<string>("PhotoPath")
                         .IsRequired()
-                        .HasColumnType("varchar");
+                        .HasColumnType("varchar(max)");
 
                     b.Property<int>("PostalCode")
                         .HasColumnType("int");

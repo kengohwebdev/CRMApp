@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Antra.CRMApp.Infrastructure.Migrations
 {
-    public partial class datatablecreation : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -84,6 +84,24 @@ namespace Antra.CRMApp.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Vendor",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "varchar(50)", nullable: false),
+                    City = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Country = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Mobile = table.Column<string>(type: "varchar(50)", nullable: false),
+                    EmailId = table.Column<string>(type: "varchar(100)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vendor", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Customer",
                 columns: table => new
                 {
@@ -128,7 +146,7 @@ namespace Antra.CRMApp.Infrastructure.Migrations
                     Country = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
                     Phone = table.Column<string>(type: "varchar(15)", maxLength: 15, nullable: false),
                     ReportsTo = table.Column<int>(type: "int", nullable: true),
-                    PhotoPath = table.Column<string>(type: "varchar", nullable: false)
+                    PhotoPath = table.Column<string>(type: "varchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -171,6 +189,9 @@ namespace Antra.CRMApp.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Shipper");
+
+            migrationBuilder.DropTable(
+                name: "Vendor");
 
             migrationBuilder.DropTable(
                 name: "Region");
