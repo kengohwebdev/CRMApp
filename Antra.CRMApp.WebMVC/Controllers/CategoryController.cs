@@ -10,29 +10,26 @@ namespace Antra.CRMApp.WebMVC.Controllers
     {
 
         private readonly ICategoryServiceAsync categoryServiceAsync;
-        public CategoryController(ICategoryServiceAsync ser)
+        public CategoryController(ICategoryServiceAsync cser)
         {
-            categoryServiceAsync = ser;
+            categoryServiceAsync = cser;
         }
-        /* public IActionResult Index()
-         {
-             List<Category> category = new List<Category>();
-             category.Add(new Category() { Id = 1, Name = "Laptop", Description = "Silver, Price = 2000" });
-             category.Add(new Category() { Id = 2, Name = "Iphone", Description = "Black, Price = 1000" });
-             category.Add(new Category() { Id = 3, Name = "Samsung Galaxy", Description = "Blue, Price = 900" });
-             category.Add(new Category() { Id = 4, Name = "Chair", Description = "Wooden, Price = 120" });
-             category.Add(new Category() { Id = 5, Name = "Table", Description = "White, Price = 250" });
-
-             ViewData["Title"] = "Category/Index";
-             return View(category);
-         }*/
+        
         public async Task<IActionResult> Index()
         {
-            var result = await categoryServiceAsync.GetAllAsync();
-            return View(result);
+            var catCollection = await categoryServiceAsync.GetAllAsync();
+            if (catCollection != null)
+                return View(catCollection);
+
+            List<CategoryModel> model = new List<CategoryModel>();
+            return View(model);
         }
 
-      
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
         [HttpPost]
         public async Task<IActionResult> Create(CategoryModel model)
         {
@@ -43,6 +40,32 @@ namespace Antra.CRMApp.WebMVC.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            ViewBag.IsEdit = false;
+            var shipModel = await categoryServiceAsync.GetCategoryForEditAsync(id);
+            return View(shipModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(CategoryModel model)
+        {
+            ViewBag.IsEdit = false;
+            if (ModelState.IsValid)
+            {
+                await categoryServiceAsync.UpdateCategoryAsync(model);
+                ViewBag.IsEdit = true;
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await categoryServiceAsync.DeleteCategoryAsync(id);
+            return RedirectToAction("Index");
         }
     }
 }

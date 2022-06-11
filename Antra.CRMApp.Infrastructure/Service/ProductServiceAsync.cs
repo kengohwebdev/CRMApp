@@ -112,6 +112,7 @@ namespace Antra.CRMApp.Infrastructure.Service
         public async Task<int> UpdateProductAsync(ProductRequestModel product)
         {
             Product pro = new Product();
+            pro.Id = product.Id;
             pro.Name = product.Name;
             pro.SupplierId = product.SupplierId;
             pro.CategoryId = product.CategoryId;

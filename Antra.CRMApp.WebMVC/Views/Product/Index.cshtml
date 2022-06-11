@@ -1,27 +1,12 @@
 ﻿@model IEnumerable<ProductResponseModel>
-<a asp-action="Create" asp-controller="Product" class="btn btn-success">Add Product</a>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Vendor Id</th>
-            <th>Category Id</th>
-            <th>Quantity Per Unit</th>
-            <th>Unit Price</th>
-            <th>Units In Stock</th>
-            <th>Units On Order</th>
-            <th>Reorder Level</th>
-            <th>Activation</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @{
-            foreach(var p in Model)
-            {
-               <partial name="_ProductRow" model="@p"></partial>
-            }
-        }
-    </tbody>
-</table>
+
+ <a asp-action="Create" asp-controller="Product" class="bg-success btn">Add Product</a>
+   <div class="row">
+   @foreach (var item in Model)
+    {
+    <partial name="_ProductCard" model="@item"></partial>
+    }
+
+ </div>
+
+        

@@ -7,9 +7,9 @@ namespace Antra.CRMApp.WebMVC.Controllers
     public class ShipperController : Controller
     {
         private readonly IShipperServiceAsync shipperServiceAsync;
-        public ShipperController(IShipperServiceAsync ser)
+        public ShipperController(IShipperServiceAsync sser)
         {
-            shipperServiceAsync = ser;
+            shipperServiceAsync = sser;
         }
 
         public async Task<IActionResult> Index()
@@ -22,6 +22,48 @@ namespace Antra.CRMApp.WebMVC.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public async Task<IActionResult> Create(ShipperModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                await shipperServiceAsync.AddShipperAsync(model);
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            ViewBag.IsEdit = false;
+            var shipModel = await shipperServiceAsync.GetShipperForEditAsync(id);
+            return View(shipModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(ShipperModel model)
+        {
+            ViewBag.IsEdit = false;
+            if (ModelState.IsValid)
+            {
+                await shipperServiceAsync.UpdateShipperAsync(model);
+                ViewBag.IsEdit = true;
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await shipperServiceAsync.DeleteShipperAsync(id);
+            return RedirectToAction("Index");
+        }
     }
 }

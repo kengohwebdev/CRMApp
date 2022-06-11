@@ -11,5 +11,10 @@ namespace Antra.CRMApp.Core.Contract.Service
     {
         Task<IEnumerable<ShipperModel>> GetAllAsync();
         Task<int> AddShipperAsync(ShipperModel model);
+        Task<ShipperModel> GetByIdAsync(int id);
+        Task<ShipperModel> GetShipperForEditAsync(int id);
+        Task<int> UpdateShipperAsync(ShipperModel shipper);
+        Task<int> DeleteShipperAsync(int id);
     }
+
 }

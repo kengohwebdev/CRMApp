@@ -26,7 +26,6 @@ namespace Antra.CRMApp.Infrastructure.Service
             ven.Country = model.Country;
             ven.Mobile = model.Mobile;
             ven.EmailId = model.EmailId;
-            ven.Id = model.Id;
             ven.City = model.City;
             ven.IsActive = model.IsActive;
             
@@ -56,7 +55,23 @@ namespace Antra.CRMApp.Infrastructure.Service
             }
             return null;
         }
-
+        public async Task<VendorModel> GetByIdAsync(int id)
+        {
+            var item = await vendorRepositoryAsync.GetByIdAsync(id);
+            if (item != null)
+            {
+                VendorModel model = new VendorModel();
+                model.Name = item.Name;
+                model.Id = item.Id;
+                model.EmailId = item.EmailId;
+                model.City = item.City;
+                model.Country = item.Country;
+                model.IsActive = item.IsActive;
+                model.Mobile = item.Mobile;
+                return model;
+            }
+            return null;
+        }
 
         public async Task<VendorModel> GetVendorForEditAsync(int id)
         {
@@ -76,23 +91,7 @@ namespace Antra.CRMApp.Infrastructure.Service
             return null;
         }
 
-        public async Task<VendorModel> GetByIdAsync(int id)
-        {
-            var item = await vendorRepositoryAsync.GetByIdAsync(id);
-            if (item != null)
-            {
-                VendorModel model = new VendorModel();
-                model.Name = item.Name;
-                model.Id = item.Id;
-                model.EmailId = item.EmailId;
-                model.City = item.City;
-                model.Country = item.Country;
-                model.IsActive = item.IsActive;
-                model.Mobile = item.Mobile;
-                return model;
-            }
-            return null;
-        }
+       
         public async Task<int> DeleteVendorAsync(int id)
         {
             return await vendorRepositoryAsync.DeleteAsync(id);

@@ -19,8 +19,11 @@ namespace Antra.CRMApp.WebMVC.Controllers
             vendorServiceAsync = vendorservice;
             categoryServiceAsync = categoryservice;
         }
+
+
         public async Task<IActionResult> Index()
         {
+
             var productCollection = await productServiceAsync.GetAllAsync();
             if (productCollection != null)
                 return View(productCollection);
@@ -37,10 +40,10 @@ namespace Antra.CRMApp.WebMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            var collection1 = await vendorServiceAsync.GetAllAsync();
-            ViewBag.Vendors = new SelectList(collection1, "Id", "Name");
-            var collection2 = await categoryServiceAsync.GetAllAsync();
-            ViewBag.Categories = new SelectList(collection2, "Id", "Name");
+            var collectionVen = await vendorServiceAsync.GetAllAsync();
+            ViewBag.Vendors = new SelectList(collectionVen, "Id", "Name");
+            var collectionCat = await categoryServiceAsync.GetAllAsync();
+            ViewBag.Categories = new SelectList(collectionCat, "Id", "Name");
             return View();
         }
         [HttpPost]
@@ -51,10 +54,10 @@ namespace Antra.CRMApp.WebMVC.Controllers
                 await productServiceAsync.AddProductAsync(model);
                 return RedirectToAction("Index");
             }
-            var collection1 = await vendorServiceAsync.GetAllAsync();
-            ViewBag.Vendors = new SelectList(collection1, "Id", "Name");
-            var collection2 = await categoryServiceAsync.GetAllAsync();
-            ViewBag.Categories = new SelectList(collection2, "Id", "Name");
+            var collectionVen = await vendorServiceAsync.GetAllAsync();
+            ViewBag.Vendors = new SelectList(collectionVen, "Id", "Name");
+            var collectionCat = await categoryServiceAsync.GetAllAsync();
+            ViewBag.Categories = new SelectList(collectionCat, "Id", "Name");
             return View(model);
         }
 
@@ -70,20 +73,20 @@ namespace Antra.CRMApp.WebMVC.Controllers
         {
             ViewBag.IsEdit = false;
             var proModel = await productServiceAsync.GetProductForEditAsync(id);
-            var collection1 = await vendorServiceAsync.GetAllAsync();
-            ViewBag.Vendors = new SelectList(collection1, "Id", "Name");
-            var collection2 = await categoryServiceAsync.GetAllAsync();
-            ViewBag.Categories = new SelectList(collection2, "Id", "Name");
+            var collectionVen = await vendorServiceAsync.GetAllAsync();
+            ViewBag.Vendors = new SelectList(collectionVen, "Id", "Name");
+            var collectionCat = await categoryServiceAsync.GetAllAsync();
+            ViewBag.Categories = new SelectList(collectionCat, "Id", "Name");
             return View(proModel);
         }
         [HttpPost]
         public async Task<IActionResult> Edit(ProductRequestModel model)
         {
             ViewBag.IsEdit = false;
-            var collection1 = await vendorServiceAsync.GetAllAsync();
-            ViewBag.Vendors = new SelectList(collection1, "Id", "Name");
-            var collection2 = await categoryServiceAsync.GetAllAsync();
-            ViewBag.Categories = new SelectList(collection2, "Id", "Name");
+            var collectionVen = await vendorServiceAsync.GetAllAsync();
+            ViewBag.Vendors = new SelectList(collectionVen, "Id", "Name");
+            var collectionCat = await categoryServiceAsync.GetAllAsync();
+            ViewBag.Categories = new SelectList(collectionCat, "Id", "Name");
             if (ModelState.IsValid)
             {
                 await productServiceAsync.UpdateProductAsync(model);

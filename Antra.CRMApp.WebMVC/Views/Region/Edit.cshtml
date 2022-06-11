@@ -1,0 +1,32 @@
+﻿@model RegionModel
+
+
+   @if (ViewBag.IsEdit==true)
+{ 
+        <div class="container">
+            <di class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Vendor Updated Successfully. Go to <a asp-action="Index" asp-controller="Vendor" >Index</a> </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+}
+
+<form asp-controller="Region" asp-action="Edit" method="post">
+    <h1 class="display-6">Edit Region</h1>
+    <hr/>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control"/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            </div>
+        <div class="row">
+            <div class="col">
+                <input type="submit" value="Edit Region" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>

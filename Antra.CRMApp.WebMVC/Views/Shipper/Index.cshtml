@@ -1,5 +1,18 @@
 ﻿@model IEnumerable<ShipperModel>
+
 <a asp-action="Create" asp-controller="Shipper" class="btn bg-success" >Add Shipper</a>
+
+   <div class="row">
+   @foreach (var item in Model)
+    {
+    <partial name="_ShipperCard" model="@item"></partial>
+    }
+
+ </div>
+
+
+
+@*<a asp-action="Create" asp-controller="Shipper" class="btn bg-success" >Add Shipper</a>
 <table class="table table-striped">
   <thead>
       <tr>
@@ -18,4 +31,4 @@
             </tr>
         }
     </tbody>
-</table>
+</table>*@

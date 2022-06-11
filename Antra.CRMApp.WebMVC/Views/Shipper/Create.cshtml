@@ -1,7 +1,6 @@
-﻿
-@model CategoryModel
-<form asp-controller="Category" asp-action="Create" method="post">
-    <h1 class="display-6">Add New Category</h1>
+﻿@model ShipperModel
+<form asp-controller="Shipper" asp-action="Create" method="post">
+    <h1 class="display-6">Add New Shipper</h1>
     <hr/>
     <div class="container">
         <div class="row">
@@ -11,9 +10,9 @@
                     <input asp-for="Name" class="form-control"/>
                     <span asp-validation-for="Name" class="text-danger"></span>
                 <div class="mb-4">
-                    <label asp-for="Description"></label>
-                    <input asp-for="Description" class="form-control"/>
-                    <span asp-validation-for="Description" class="text-danger"></span>
+                    <label asp-for="Phone"></label>
+                    <input asp-for="Phone" class="form-control"/>
+                    <span asp-validation-for="Phone" class="text-danger"></span>
                 </div>
                 </div>
                 </div>
@@ -22,7 +21,7 @@
        
         <div class="row">
             <div class="col">
-                <input type="submit" value="Add Category" class="btn btn-primary" />
+                <input type="submit" value="Add Shipper" class="btn btn-primary" />
             </div>
         </div>
     </div>

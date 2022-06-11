@@ -1,9 +1,9 @@
-﻿@*@model ProductResponseModel
+﻿@model ProductResponseModel
 <@if (ViewBag.IsEdit==true)
 {
     <div class="container">
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Product Updated Successfully. Go to <a asp-action="Index" asp-controller="Product" >Product Home Page</a> </strong>
+            <strong>Product Updated Successfully. Go to <a asp-action="Index" asp-controller="Product" >Product</a> </strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </div>
@@ -23,11 +23,11 @@
             </div>
             <div class="col">
                  <div class="mb-4">
-                    <label asp-for="VendorId">Supplier</label>
-                    <select asp-for="VendorId" class="form-control" asp-items="ViewBag.Vendors" >
+                    <label asp-for="SupplierId">Vendor</label>
+                    <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.Vendors" >
                     <option value="">Select a supplier</option>   
                     </select>
-                    <span asp-validation-for="VendorId"></span>
+                    <span asp-validation-for="SupplierId"></span>
                 </div>
             </div>
             <div class="col">
@@ -96,4 +96,4 @@
             </div>
         </div>
     </div>
-</form>*@
+</form>

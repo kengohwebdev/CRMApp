@@ -1,6 +1,16 @@
 ﻿
 @model CategoryModel
-<form asp-controller="Category" asp-action="Create" method="post">
+
+   @if (ViewBag.IsEdit==true)
+{
+     
+        <div class="container">
+            <di class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Category Updated Successfully. Go to <a asp-action="Index" asp-controller="Category" >Index</a> </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+}
+<form asp-controller="Category" asp-action="Edit" method="post">
     <h1 class="display-6">Add New Category</h1>
     <hr/>
     <div class="container">

@@ -1,0 +1,40 @@
+﻿@model ShipperModel
+
+
+   @if (ViewBag.IsEdit==true)
+{
+     
+        <div class="container">
+            <di class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Shipper Updated Successfully. Go to <a asp-action="Index" asp-controller="Shipper" >Index</a> </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+}
+
+<form asp-controller="Shipper" asp-action="Edit" method="post">
+    <h1 class="display-6">Add New Shipper</h1>
+    <hr/>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control"/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                <div class="mb-4">
+                    <label asp-for="Phone"></label>
+                    <input asp-for="Phone" class="form-control"/>
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                </div>
+                </div>
+                </div>
+           
+       
+        <div class="row">
+            <div class="col">
+                <input type="submit" value="Add Shipper" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
