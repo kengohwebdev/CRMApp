@@ -32,11 +32,7 @@ namespace Antra.CRMApp.WebMVC.Controllers
             return View(result);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Create()
-        {
-            return View();
-        }
+      
         [HttpPost]
         public async Task<IActionResult> Create(CategoryModel model)
         {

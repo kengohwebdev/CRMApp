@@ -21,15 +21,15 @@ namespace Antra.CRMApp.Infrastructure.Service
         public async Task<int> AddCustomerAsync(CustomerRequestModel customer)
         {
             Customer cust = new Customer();
-            cust.Address = customer.Address;
-            cust.RegionId = customer.RegionId;
-            cust.City = customer.City;
-            cust.Country = customer.Country;
             cust.Name = customer.Name;
-            cust.Phone = customer.Phone;
-            cust.PostalCode = customer.PostalCode;
             cust.Title = customer.Title;
-            cust.Region = customer.Region;
+            cust.Address = customer.Address;
+            cust.City = customer.City;
+            cust.RegionId = customer.RegionId;
+            cust.PostalCode = customer.PostalCode;
+            cust.Country = customer.Country;
+            cust.Phone = customer.Phone;
+              
             return await customerRepositoryAsync.InsertAsync(cust);
         }
 
@@ -49,11 +49,12 @@ namespace Antra.CRMApp.Infrastructure.Service
                 {
                     CustomerResponseModel model = new CustomerResponseModel();
                     model.Id = item.Id;
-                    model.Phone = item.Phone;
-                    model.Title = item.Title;
-                    model.Address = item.Address;
-                    model.City = item.City;
                     model.Name = item.Name;
+                    model.City = item.City;
+                    model.Address = item.Address;
+                    model.Title = item.Title;
+                    model.Phone = item.Phone;
+                
                     result.Add(model);
                 }
                 return result;
@@ -68,11 +69,11 @@ namespace Antra.CRMApp.Infrastructure.Service
             {
                 CustomerResponseModel model = new CustomerResponseModel();
                 model.Id = item.Id;
-                model.Phone = item.Phone;
-                model.Title = item.Title;
-                model.Address = item.Address;
-                model.City = item.City;
                 model.Name = item.Name;
+                model.City = item.City;
+                model.Address = item.Address;
+                model.Title = item.Title;
+                model.Phone = item.Phone;
                 return model;
             }
             return null;
@@ -84,12 +85,15 @@ namespace Antra.CRMApp.Infrastructure.Service
             if (item != null)
             {
                 CustomerRequestModel model = new CustomerRequestModel();
-                model.Id = item.Id;
-                model.Phone = item.Phone;
-                model.Title = item.Title;
+                model.Id =item.Id;
                 model.Address = item.Address;
+                model.RegionId = item.RegionId;
                 model.City = item.City;
+                model.Country = item.Country;
                 model.Name = item.Name;
+                model.Phone = item.Phone;
+                model.PostalCode = item.PostalCode;
+                model.Title = item.Title;
                 return model;
             }
             return null;
@@ -98,16 +102,17 @@ namespace Antra.CRMApp.Infrastructure.Service
         public async Task<int> UpdateCustomerAsync(CustomerRequestModel customer)
         {
             Customer cust = new Customer();
-            cust.Address = customer.Address;
-            cust.RegionId = customer.RegionId;
-            cust.City = customer.City;
-            cust.Country = customer.Country;
+            cust.Id = customer.Id;
             cust.Name = customer.Name;
-            cust.Phone = customer.Phone;
-            cust.PostalCode = customer.PostalCode;
             cust.Title = customer.Title;
-            cust.Region = customer.Region;
-            return await customerRepositoryAsync.InsertAsync(cust);
+            cust.Address = customer.Address;
+            cust.City = customer.City;
+            cust.RegionId = customer.RegionId;
+            cust.PostalCode = customer.PostalCode;
+            cust.Country = customer.Country;
+            cust.Phone = customer.Phone;
+           
+            return await customerRepositoryAsync.UpdateAsync(cust);
         }
     }
 }

@@ -7,16 +7,16 @@ namespace Antra.CRMApp.WebMVC.Controllers
     public class VendorController : Controller
     {
         private readonly IVendorServiceAsync vendorServiceAsync;
-        public VendorController(IVendorServiceAsync ser)
+        public VendorController(IVendorServiceAsync vser)
         {
-            vendorServiceAsync = ser;
+            vendorServiceAsync = vser;
         }
 
         public async Task<IActionResult> Index()
         {
-            var shipCollection = await vendorServiceAsync.GetAllAsync();
-            if (shipCollection != null)
-                return View(shipCollection);
+            var venCollection = await vendorServiceAsync.GetAllAsync();
+            if (venCollection != null)
+                return View(venCollection);
 
             List<VendorModel> model = new List<VendorModel>();
             return View(model);
@@ -27,6 +27,7 @@ namespace Antra.CRMApp.WebMVC.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Create(VendorModel model)
         {
@@ -35,12 +36,34 @@ namespace Antra.CRMApp.WebMVC.Controllers
                 await vendorServiceAsync.AddVendorAsync(model);
                 return RedirectToAction("Index");
             }
-
             return View(model);
         }
 
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            ViewBag.IsEdit = false;
+            var venModel = await vendorServiceAsync.GetVendorForEditAsync(id);
+            return View(venModel);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(VendorModel model)
+        {
+            ViewBag.IsEdit = false;
+            if (ModelState.IsValid)
+            {
+                await vendorServiceAsync.UpdateVendorAsync(model);
+                ViewBag.IsEdit = true;
+            }
+            return View(model);
+        }
 
-
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await vendorServiceAsync.DeleteVendorAsync(id);
+            return RedirectToAction("Index");
+        }
     }
 }

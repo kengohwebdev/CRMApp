@@ -1,0 +1,13 @@
+﻿@model VendorModel
+
+<div class="col mb-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Name</h5>
+                    <p class="card-text">@Model.EmailId</p>
+                    <p class="card-text">@Model.Mobile</p>
+                    <a asp-action="Edit" asp-controller="Vendor" asp-route-id="@Model.Id"  class="btn btn-primary">Edit</a>
+                <a class="btn bg-danger" asp-action="Delete" asp-controller="Vendor" asp-route-id="@Model.Id" >Delete</a>
+                </div>
+            </div>
+            </div>

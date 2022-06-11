@@ -1,0 +1,61 @@
+﻿@model VendorModel
+<form asp-controller="Vendor" asp-action="Create" method="post">
+    <h1 class="display-6">Add New Vendor</h1>
+    <hr/>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control"/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="City"></label>
+                    <input asp-for="City" class="form-control"/>
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="Country"></label>
+                    <input asp-for="Country" class="form-control"/>
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="Mobile"></label>
+                    <input asp-for="Mobile" class="form-control"/>
+                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="EmailId"></label>
+                    <input asp-for="EmailId" class="form-control"/>
+                    <span asp-validation-for="EmailId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col">
+                 <div class="mb-4">
+                    <label asp-for="IsActive"></label>
+                    <select asp-for="IsActive" class="form-control">
+                        <option value="True">Activate</option>
+                        <option value="False">Deactivate</option>
+                    </select>
+                    <span asp-validation-for="IsActive"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input type="submit" value="Add Vendor" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>

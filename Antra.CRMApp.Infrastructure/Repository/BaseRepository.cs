@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Antra.CRMApp.Core.Contract.Repository;
 using Antra.CRMApp.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+
 namespace Antra.CRMApp.Infrastructure.Repository
 {
     public class BaseRepository<T> : IRepositoryAsync<T> where T : class

@@ -12,11 +12,11 @@ namespace Antra.CRMApp.Core.Entity
         public int Id { get; set; }
         [Required, Column(TypeName = "varchar")]
         [MaxLength(20)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
 
         [Required, Column(TypeName = "varchar")]
         [MaxLength(80)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
     }
 }

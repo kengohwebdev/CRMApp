@@ -22,25 +22,6 @@ namespace Antra.CRMApp.WebMVC.Controllers
             return View(model);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Create()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Create(ShipperModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                await shipperServiceAsync.AddShipperAsync(model);
-                return RedirectToAction("Index");
-            }
-
-            return View(model);
-        }
-
-
-
 
     }
 }

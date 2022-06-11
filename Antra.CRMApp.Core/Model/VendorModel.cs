@@ -36,6 +36,7 @@ namespace Antra.CRMApp.Core.Model
         public string EmailId { get; set; }
 
         [Required]
+        [Display(Name = "Active status")]
         public bool IsActive { get; set; }
     }
 }

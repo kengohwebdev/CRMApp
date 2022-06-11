@@ -1,35 +1,39 @@
 ﻿@model IEnumerable<VendorModel>
 <a asp-action="Create" asp-controller="Vendor" class="btn bg-success" >Add Vendor</a>
+
+   <div class="row">
+   @foreach (var item in Model)
+    {
+    <partial name="_VendorCard" model="@item"></partial>
+    }
+
+ </div>
+
+
+@*
 <table class="table table-striped">
   <thead>
       <tr>
           <th>Id</th>
           <th>Name</th>
           <th>Email Id</th>
-      </tr>
-       <tr>
           <th>City</th>
           <th>Country</th>
           <th>Mobile</th>
-      </tr>
       <tr><th>Active</th></tr>
   </thead>
   <tbody>
       @foreach(var v in Model)
         {
             <tr>
-                <td>@v.Id</td>
-                <td>@v.Name</td>
-                <td>@v.EmailId</td>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>City</td>
+                <td>Country</td>
+                <td>Mobile</td>
+                <td>Activation</td>
             </tr>
-              <tr>
-                <td>@v.City</td>
-                <td>@v.Country</td>
-                <td>@v.Mobile</td>
-            </tr>
-            <tr><th>Active</th></tr>
         }
     </tbody>
-</table>
-
- 
+</table>*@

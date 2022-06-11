@@ -26,7 +26,7 @@ namespace Antra.CRMApp.Core.Entity
         public DateTime HireDate { get; set; }
         [Required, Column(TypeName = "varchar")]
         [MaxLength(80)]
-        public string Address { get; set; }
+        public string? Address { get; set; }
         [Required, Column(TypeName = "varchar")]
         [MaxLength(20)]
         public string City { get; set; }

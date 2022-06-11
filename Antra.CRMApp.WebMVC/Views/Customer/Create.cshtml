@@ -3,82 +3,84 @@
 *@
 @model CustomerRequestModel
 <form asp-controller="Customer" asp-action="Create" method="post">
-    <h1 class="display-6">Add New Customer</h1>
+    <h1 class="display-6">Add New Employee</h1>
     <hr/>
 <div class="container">
     <div class="row">
+        <div class="col">
+            <div class="mb-4">
+                <label asp-for="Id"></label>
+                <input asp-for="Id" class="form-control"/>
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+        </div>
         <div class="col">
             <div class="mb-4">
                 <label asp-for="Name"></label>
                 <input asp-for="Name" class="form-control"/>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-        </div>  
+        </div>
         <div class="col">
             <div class="mb-4">
                 <label asp-for="Title"></label>
                 <input asp-for="Title" class="form-control"/>
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-        </div>    
+        </div>
     </div>
     <div class="row">
         <div class="col">
             <div class="mb-4">
                 <label asp-for="Address"></label>
                 <input asp-for="Address" class="form-control"/>
-                <span asp-validation-for="Address" class="text-danger"></span>
+                <span asp-validation-for="Address"></span>
             </div>
-        </div>  
+        </div>
         <div class="col">
-            <div class="mb-4">
-                <label asp-for="City"></label>
-                <input asp-for="City" class="form-control"/>
-                <span asp-validation-for="City" class="text-danger"></span>
-            </div>
-        </div>    
-    </div>
-     <div class="row">
-        <div class="col">
-            <div class="mb-4">
+             <div class="mb-4">
                 <label asp-for="RegionId"></label>
                 <select asp-for="RegionId" class="form-control" asp-items="ViewBag.Regions" >
                 <option value="">Select a region</option>   
                 </select>
                 <span asp-validation-for="RegionId"></span>
             </div>
-        </div>  
+        </div>
         <div class="col">
             <div class="mb-4">
+                <label asp-for="City"></label>
+                <input asp-for="City" class="form-control"/>
+                <span asp-validation-for="City"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"><div class="mb-4">
                 <label asp-for="PostalCode"></label>
                 <input asp-for="PostalCode" class="form-control"/>
-                <span asp-validation-for="PostalCode" class="text-danger"></span>
-            </div>
-        </div>    
-    </div>
-        <div class="row">
+                <span asp-validation-for="PostalCode"></span>
+            </div></div>
         <div class="col">
             <div class="mb-4">
                 <label asp-for="Country"></label>
                 <input asp-for="Country" class="form-control"/>
-                <span asp-validation-for="Country" class="text-danger"></span>
+                <span asp-validation-for="Country"></span>
             </div>
-        </div>  
+        </div>
         <div class="col">
             <div class="mb-4">
                 <label asp-for="Phone"></label>
                 <input asp-for="Phone" class="form-control"/>
-                <span asp-validation-for="Phone" class="text-danger"></span>
+                <span asp-validation-for="Phone"></span>
             </div>
-        </div>    
-       
+
+        </div>
     </div>
-    
 
     
     <div class="row">
         <div class="col">
-            <input type="submit" value="Add Customer" class="btn btn-primary" />
+            <input type="submit" value="Add Employee" class="btn btn-primary" />
         </div>
     </div>
 </div>

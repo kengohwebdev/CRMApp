@@ -1,21 +1,89 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@model Product
-<form method="post"  >
-    <div class="my-5">
-        <input type="text" asp-for="Name"  class="form-control" placeholder="Enter Name"/>
-    <span asp-validation-for="Name" class="text-danger"></span>
+﻿@model ProductRequestModel
+<form asp-controller="Product" asp-action="Create" method="post">
+    <h1 class="display-6">Add New Product</h1>
+    <hr/>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="Name"></label>
+                    <input asp-for="Name" class="form-control"/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col">
+                 <div class="mb-4">
+                    <label asp-for="Id">Vendor</label>
+                    <select asp-for="Id" class="form-control" asp-items="ViewBag.Vendors" >
+                    <option value="">Choose a vendor</option>   
+                    </select>
+                    <span asp-validation-for="Id"></span>
+                </div>
+            </div>
+            <div class="col">
+                 <div class="mb-4">
+                    <label asp-for="CategoryId">Category</label>
+                    <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories" >
+                    <option value="">Choose a category</option>   
+                    </select>
+                    <span asp-validation-for="CategoryId"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="QuantityPerUnit">Quantity Per Unit</label>
+                    <input asp-for="QuantityPerUnit" class="form-control"/>
+                    <span asp-validation-for="QuantityPerUnit" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="UnitPrice">Unit Price</label>
+                    <input asp-for="UnitPrice" class="form-control"/>
+                    <span asp-validation-for="UnitPrice" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="UnitsInStock">Units In Stock</label>
+                    <input asp-for="UnitsInStock" class="form-control"/>
+                    <span asp-validation-for="UnitsInStock" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="UnitsOnOrder">Units On Order</label>
+                    <input asp-for="UnitsOnOrder" class="form-control"/>
+                    <span asp-validation-for="UnitsOnOrder" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mb-4">
+                    <label asp-for="ReorderLevel">Reorder Level</label>
+                    <input asp-for="ReorderLevel" class="form-control"/>
+                    <span asp-validation-for="ReorderLevel" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col">
+                 <div class="mb-4">
+                    <label asp-for="Discontinued">Status</label>
+                    <select asp-for="Discontinued" class="form-control">
+                        <option value="">Select an option</option> 
+                        <option value="True">Out of stock</option>
+                        <option value="False">Available</option>
+                    </select>
+                    <span asp-validation-for="Discontinued"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input type="submit" value="Add Product" class="btn btn-primary" />
+            </div>
+        </div>
     </div>
-    <div class="my-5">
-        <input type="text" asp-for="Price" class="form-control" placeholder="Enter Price"/>
- <span asp-validation-for="Price" class="text-danger"></span>
-   
-    </div>
-    <div class="my-5">
-        <input type="text" asp-for="Color" class="form-control" placeholder="Enter Color"/>
-    <span asp-validation-for="Color" class="text-danger"></span>
-   
-    </div>
-    <input type="submit" class="btn-primary" value="Create" />
 </form>

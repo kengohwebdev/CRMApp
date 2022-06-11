@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using Antra.CRMApp.Core.Entity;
+
 
 namespace Antra.CRMApp.Core.Model
 {
@@ -24,6 +24,8 @@ namespace Antra.CRMApp.Core.Model
         [Required, Column(TypeName = "varchar")]
         [MaxLength(20)]
         public string City { get; set; }
+
+        [Display(Name = "Region")]
         public int RegionId { get; set; }
         public int PostalCode { get; set; }
         [Required, Column(TypeName = "varchar")]
@@ -32,6 +34,6 @@ namespace Antra.CRMApp.Core.Model
         [Required, Column(TypeName = "varchar")]
         [MaxLength(15)]
         public string Phone { get; set; }
-        public Region Region { get; set; }
+        
     }
 }

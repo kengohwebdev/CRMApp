@@ -4,7 +4,7 @@ namespace Antra.CRMApp.WebMVC.Models
 {
     public class Product
     {
-        public int Id { get; set; }
+        /*public int Id { get; set; }
         
         [Required(ErrorMessage ="Name is required")]
         public string Name { get; set; } 
@@ -13,6 +13,6 @@ namespace Antra.CRMApp.WebMVC.Models
         public decimal Price { get; set; }
         
         [Required(ErrorMessage ="Color is Required")]
-        public string Color { get; set; } 
+        public string Color { get; set; } */
     }
 }

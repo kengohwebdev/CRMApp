@@ -14,6 +14,7 @@ namespace Antra.CRMApp.WebMVC.Controllers
             customerServiceAsync = custservice;
             regionServiceAsync = creg;
         }
+
         public async Task<IActionResult> Index()
         {
             var custCollection = await customerServiceAsync.GetAllAsync();
@@ -40,11 +41,13 @@ namespace Antra.CRMApp.WebMVC.Controllers
                 await customerServiceAsync.AddCustomerAsync(model);
                 return RedirectToAction("Index");
             }
+
             var collection = await regionServiceAsync.GetAllAsync();
             ViewBag.Regions = new SelectList(collection, "Id", "Name");
             return View(model);
         }
 
+        
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
@@ -65,6 +68,7 @@ namespace Antra.CRMApp.WebMVC.Controllers
             {
                 await customerServiceAsync.UpdateCustomerAsync(model);
                 ViewBag.IsEdit = true;
+
             }
 
             return View(model);
@@ -77,7 +81,7 @@ namespace Antra.CRMApp.WebMVC.Controllers
             return RedirectToAction("Index");
         }
 
-      
+
 
 
     }
