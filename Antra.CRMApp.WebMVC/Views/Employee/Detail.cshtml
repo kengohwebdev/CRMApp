@@ -1,0 +1,42 @@
+﻿@using Antra.CRMApp.Core.Model
+@model List<EmployeeRequestModel>
+
+<h1>Employee index</h1>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <td>Title</td>
+            <td>TitleOfCourtesy</td>
+            <td>First Name</td>
+            <td>Last Name</td>
+            </tr>
+            <tr>
+            <th>City</th>
+            <th>Phone</th>
+            <th>Birthdate</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach(var e in Model)
+            {
+               <tr>
+              
+               <td>@e.Title</td>
+               <td>@e.TitleOfCourtesy</td>
+               <td>@e.FirstName</td>
+               <td>@e.LastName</td>
+               </tr>
+               <tr>
+               <td>@e.City</td>
+               <td>@e.Phone</td>
+               <td>@e.BirthDate</td>
+               <td>@e.Address</td>
+               </tr> 
+
+            }
+        }
+    </tbody>
+</table>

@@ -1,7 +1,11 @@
-﻿using Antra.CRMApp.Core.Contract.Service;
+﻿using Antra.CRMApp.Core.Contract.Repository;
+using Antra.CRMApp.Core.Contract.Service;
+using Antra.CRMApp.Core.Entity;
 using Antra.CRMApp.Core.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Razor;
+
 
 namespace Antra.CRMApp.WebMVC.Controllers
 {
@@ -84,5 +88,15 @@ namespace Antra.CRMApp.WebMVC.Controllers
         }
 
 
+       
+        public async Task<IActionResult> Detail()
+        {
+            var empCollection = await employeeServiceAsync.GetAllAsync();
+            if (empCollection != null)
+                return View(empCollection);
+
+            List<EmployeeResponseModel> model = new List<EmployeeResponseModel>();
+            return View(model);
+        }
     }
 }

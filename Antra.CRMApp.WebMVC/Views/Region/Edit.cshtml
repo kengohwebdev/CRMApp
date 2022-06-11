@@ -1,32 +1,31 @@
-﻿@model RegionModel
+﻿@model IEnumerable<RegionModel>
 
 
    @if (ViewBag.IsEdit==true)
 { 
         <div class="container">
             <di class="alert alert-warning alert-dismissible fade show" role="alert">
-                <strong>Vendor Updated Successfully. Go to <a asp-action="Index" asp-controller="Vendor" >Index</a> </strong>
+                <strong>Region Updated Successfully. Go to <a asp-action="Index" asp-controller="Region" >Index</a> </strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 }
 
-<form asp-controller="Region" asp-action="Edit" method="post">
-    <h1 class="display-6">Edit Region</h1>
-    <hr/>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="mb-4">
-                    <label asp-for="Name"></label>
-                    <input asp-for="Name" class="form-control"/>
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-            </div>
-            </div>
-        <div class="row">
-            <div class="col">
-                <input type="submit" value="Edit Region" class="btn btn-primary" />
-            </div>
-        </div>
-    </div>
-</form>
+
+<a asp-action="Edit" asp-controller="Region" class="btn bg-success" >Edit Region</a>
+<table class="table table-striped">
+  <thead>
+      <tr>
+          <th>Id</th>
+          <th>Name</th>
+      </tr>
+  </thead>
+  <tbody>
+      @foreach(var m in Model)
+        {
+            <tr>
+                <td>@m.Id</td>
+                <td>@m.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

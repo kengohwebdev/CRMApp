@@ -1,10 +1,20 @@
-﻿@model IEnumerable<EmployeeResponseModel>
-
- <a asp-action="Create" asp-controller="Region" class="bg-success btn">Add Region</a>
-   <div class="row">
-   @foreach (var item in Model)
-    {
-    <partial name="_RegionCard" model="@item"></partial>
-    }
-
- </div>
+﻿@model IEnumerable<RegionModel>
+<a asp-action="Create" asp-controller="Region" class="btn bg-success" >Add Region</a>
+<a asp-action="Edit" asp-controller="Region" class="btn bg-success" >Edit Region</a>
+<table class="table table-striped">
+  <thead>
+      <tr>
+          <th>Id</th>
+          <th>Name</th>
+      </tr>
+  </thead>
+  <tbody>
+      @foreach(var m in Model)
+        {
+            <tr>
+                <td>@m.Id</td>
+                <td>@m.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

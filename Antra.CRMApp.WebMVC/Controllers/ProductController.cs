@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Antra.CRMApp.WebMVC.Models;
-using Antra.CRMApp.Infrastructure.Service;
+﻿using Antra.CRMApp.Core.Contract.Repository;
 using Antra.CRMApp.Core.Contract.Service;
+using Antra.CRMApp.Core.Entity;
 using Antra.CRMApp.Core.Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Antra.CRMApp.WebMVC.Controllers
