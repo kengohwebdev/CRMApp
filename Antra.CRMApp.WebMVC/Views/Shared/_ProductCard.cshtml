@@ -5,6 +5,17 @@
                 <div class="card-body">
                     <h5 class="card-title">@Model.Name</h5>
                     <p class="card-text">@Model.UnitPrice</p>
+                    <p class="card-text">@Model.UnitsInStock</p>
+                    <p>
+                        @{
+                        var availability = "In stock";
+                            if(@Model.Discontinued)
+                            {
+                                 availability = "Out of stock";
+                            }
+                        }
+                        @availability
+                    </p>
                     <a asp-action="Edit" asp-controller="Product" asp-route-id="@Model.Id"  class="btn btn-primary">Edit</a>
                 <a class="btn bg-danger" asp-action="Delete" asp-controller="Product" asp-route-id="@Model.Id" >Delete</a>
                 </div>

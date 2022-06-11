@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<RegionModel>
 <a asp-action="Create" asp-controller="Region" class="btn bg-success" >Add Region</a>
-<a asp-action="Edit" asp-controller="Region" class="btn bg-success" >Edit Region</a>
 <table class="table table-striped">
   <thead>
       <tr>
@@ -9,12 +8,9 @@
       </tr>
   </thead>
   <tbody>
-      @foreach(var m in Model)
+       @foreach(var r in Model)
         {
-            <tr>
-                <td>@m.Id</td>
-                <td>@m.Name</td>
-            </tr>
+            <partial name="_RegionRow" model="@r"></partial>
         }
     </tbody>
 </table>

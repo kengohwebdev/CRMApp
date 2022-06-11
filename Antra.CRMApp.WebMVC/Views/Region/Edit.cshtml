@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RegionModel>
+﻿@model RegionModel
 
 
    @if (ViewBag.IsEdit==true)
@@ -10,22 +10,17 @@
             </div>
 }
 
-
-<a asp-action="Edit" asp-controller="Region" class="btn bg-success" >Edit Region</a>
-<table class="table table-striped">
-  <thead>
-      <tr>
-          <th>Id</th>
-          <th>Name</th>
-      </tr>
-  </thead>
-  <tbody>
-      @foreach(var m in Model)
-        {
-            <tr>
-                <td>@m.Id</td>
-                <td>@m.Name</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<form asp-action="Edit" asp-controller="Region" method="post">
+    <h1 class="display-6">Edit Region</h1>
+    <hr/>
+    <div class="container">
+        <div class="row">
+            <div class="col mb-5">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control"/>
+                <span asp-validation-for="Name"></span>
+            </div>
+        </div>
+        <input type="submit" class="btn-primary btn" value="Edit Region"/>
+    </div>
+</form>
