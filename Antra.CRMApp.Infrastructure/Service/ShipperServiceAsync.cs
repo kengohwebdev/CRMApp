@@ -37,9 +37,9 @@ namespace Antra.CRMApp.Infrastructure.Service
             return await shipperRepositoryAsync.InsertAsync(ship);
         }
 
-        public Task<int> DeleteShipperAsync(int id)
+        public async Task<int> DeleteShipperAsync(int id)
         {
-            throw new NotImplementedException();
+            return await shipperRepositoryAsync.DeleteAsync(id);
         }
 
         public async Task<IEnumerable<ShipperModel>> GetAllAsync()

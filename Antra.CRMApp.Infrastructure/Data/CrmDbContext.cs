@@ -21,7 +21,7 @@ namespace Antra.CRMApp.Infrastructure.Data
         public DbSet<Category> Category { get; set; }
         public DbSet<Region> Region { get; set; }
         public DbSet<Shipper> Shipper { get; set; }
-        public DbSet<Order> Order { get; set; }
+        
 
     }
 }

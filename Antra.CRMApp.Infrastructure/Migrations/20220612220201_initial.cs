@@ -24,18 +24,6 @@ namespace Antra.CRMApp.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Order",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1")
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Order", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Region",
                 columns: table => new
                 {
@@ -60,24 +48,6 @@ namespace Antra.CRMApp.Infrastructure.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Shipper", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Vendor",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "varchar(50)", nullable: false),
-                    City = table.Column<string>(type: "varchar(50)", nullable: false),
-                    Country = table.Column<string>(type: "varchar(50)", nullable: false),
-                    Mobile = table.Column<string>(type: "varchar(50)", nullable: false),
-                    EmailId = table.Column<string>(type: "varchar(100)", nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Vendor", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -139,6 +109,31 @@ namespace Antra.CRMApp.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Vendor",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RegionId = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "varchar(50)", nullable: false),
+                    City = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Country = table.Column<string>(type: "varchar(50)", nullable: false),
+                    Mobile = table.Column<string>(type: "varchar(50)", nullable: false),
+                    EmailId = table.Column<string>(type: "varchar(100)", nullable: false),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vendor", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Vendor_Region_RegionId",
+                        column: x => x.RegionId,
+                        principalTable: "Region",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Product",
                 columns: table => new
                 {
@@ -191,6 +186,11 @@ namespace Antra.CRMApp.Infrastructure.Migrations
                 name: "IX_Product_VendorId",
                 table: "Product",
                 column: "VendorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Vendor_RegionId",
+                table: "Vendor",
+                column: "RegionId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -202,22 +202,19 @@ namespace Antra.CRMApp.Infrastructure.Migrations
                 name: "Employee");
 
             migrationBuilder.DropTable(
-                name: "Order");
-
-            migrationBuilder.DropTable(
                 name: "Product");
 
             migrationBuilder.DropTable(
                 name: "Shipper");
 
             migrationBuilder.DropTable(
-                name: "Region");
-
-            migrationBuilder.DropTable(
                 name: "Category");
 
             migrationBuilder.DropTable(
                 name: "Vendor");
+
+            migrationBuilder.DropTable(
+                name: "Region");
         }
     }
 }

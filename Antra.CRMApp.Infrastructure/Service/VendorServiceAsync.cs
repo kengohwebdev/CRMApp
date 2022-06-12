@@ -28,6 +28,7 @@ namespace Antra.CRMApp.Infrastructure.Service
             ven.EmailId = model.EmailId;
             ven.City = model.City;
             ven.IsActive = model.IsActive;
+            ven.RegionId = model.RegionId;
             
 
             return await vendorRepositoryAsync.InsertAsync(ven);
@@ -49,6 +50,8 @@ namespace Antra.CRMApp.Infrastructure.Service
                     model.Country = item.Country;
                     model.IsActive = item.IsActive;
                     model.Mobile =  item.Mobile;
+                    model.RegionId = item.RegionId;
+
                     vendorModels.Add(model);
                 }
                 return vendorModels;
@@ -68,6 +71,7 @@ namespace Antra.CRMApp.Infrastructure.Service
                 model.Country = item.Country;
                 model.IsActive = item.IsActive;
                 model.Mobile = item.Mobile;
+                model.RegionId = item.RegionId;
                 return model;
             }
             return null;
@@ -86,6 +90,7 @@ namespace Antra.CRMApp.Infrastructure.Service
                 model.Country = item.Country;
                 model.IsActive = item.IsActive;
                 model.Mobile = item.Mobile;
+                model.RegionId = item.RegionId;
                 return model;
             }
             return null;
@@ -107,6 +112,7 @@ namespace Antra.CRMApp.Infrastructure.Service
             ven.Id = model.Id;
             ven.City = model.City;
             ven.IsActive = model.IsActive;
+            ven.RegionId = model.RegionId;
             return await vendorRepositoryAsync.UpdateAsync(ven);
         }
     }

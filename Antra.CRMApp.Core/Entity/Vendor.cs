@@ -11,8 +11,10 @@ namespace Antra.CRMApp.Core.Entity
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="Name is required")]
-        [Column(TypeName ="varchar(50)")]
+        public int RegionId { get; set; }
+
+        [Required(ErrorMessage = "Name is required")]
+        [Column(TypeName = "varchar(50)")]
         public string Name { get; set; }
 
 
@@ -36,5 +38,7 @@ namespace Antra.CRMApp.Core.Entity
 
         [Required]
         public bool IsActive { get; set; }
+
+        public Region Region { get; set; }
     }
 }

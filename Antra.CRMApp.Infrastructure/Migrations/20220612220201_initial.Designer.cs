@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Antra.CRMApp.Infrastructure.Migrations
 {
     [DbContext(typeof(CrmDbContext))]
-    [Migration("20220611180656_initial")]
+    [Migration("20220612220201_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -172,19 +172,6 @@ namespace Antra.CRMApp.Infrastructure.Migrations
                     b.ToTable("Employee");
                 });
 
-            modelBuilder.Entity("Antra.CRMApp.Core.Entity.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Order");
-                });
-
             modelBuilder.Entity("Antra.CRMApp.Core.Entity.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -305,7 +292,12 @@ namespace Antra.CRMApp.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(50)");
 
+                    b.Property<int>("RegionId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("RegionId");
 
                     b.ToTable("Vendor");
                 });
@@ -349,6 +341,17 @@ namespace Antra.CRMApp.Infrastructure.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Vendor");
+                });
+
+            modelBuilder.Entity("Antra.CRMApp.Core.Entity.Vendor", b =>
+                {
+                    b.HasOne("Antra.CRMApp.Core.Entity.Region", "Region")
+                        .WithMany()
+                        .HasForeignKey("RegionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Region");
                 });
 #pragma warning restore 612, 618
         }
