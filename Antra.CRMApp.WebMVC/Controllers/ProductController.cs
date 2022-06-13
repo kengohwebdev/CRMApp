@@ -31,10 +31,14 @@ namespace Antra.CRMApp.WebMVC.Controllers
             List<ProductResponseModel> model = new List<ProductResponseModel>();
             return View(model);
         }
-        public IActionResult Detail()
+        public async Task<IActionResult> Detail()
         {
-            ViewData["Title"] = "Product/Details";
-            return View("explain");
+            var Collection = await productServiceAsync.GetAllAsync();
+            if (Collection != null)
+                return View(Collection);
+
+            List<ProductResponseModel> model = new List<ProductResponseModel>();
+            return View(model);
         }
 
         [HttpGet]
@@ -94,5 +98,7 @@ namespace Antra.CRMApp.WebMVC.Controllers
             }
             return View(model);
         }
+
+
     }
 }

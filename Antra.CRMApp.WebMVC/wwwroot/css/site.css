@@ -16,3 +16,72 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+body {
+    background-color: floralwhite;
+    width: 90%;
+    margin: 0 auto;
+    color: rosybrown;
+    font-family: Lobster, Monospace;
+    display : block;
+    
+}
+
+legend {
+    display: block;
+    padding : 5px 2px 10px 2px; 
+    
+    
+}
+
+
+.container {
+    font-family: Lobster, Monospace;
+    padding: 1em 0.2em 1.5em 0.2em;
+}
+
+fieldset {
+    padding: 1em 0.2em 1.5em 0.2em;
+    border: 1px solid gray;
+}
+
+legend {
+    display: block;
+    padding: 0.2em 0.5em;
+    color: gray;
+    font-size: 90%;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px dotted gray;
+}
+#nav ul {
+    margin: 0px;
+    padding: 5px 0px 5px 30px;
+    background-color:lightgoldenrodyellow;
+}
+
+
+
+
+#nav li a:visited {
+    color: saddlebrown;
+}
+
+#nav li {
+    display: inline;
+    margin-right: 5px;
+}
+
+#nav li a:active {
+    color: gold;
+}
+
+#nav li a {
+    color: black;
+}
+
+#nav li a:hover {
+color: lightskyblue;
+}
+

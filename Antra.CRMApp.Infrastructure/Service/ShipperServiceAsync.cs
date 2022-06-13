@@ -52,6 +52,7 @@ namespace Antra.CRMApp.Infrastructure.Service
                 {
                     ShipperModel model = new ShipperModel();
                     model.Name = item.Name;
+                    model.Phone = item.Phone;
                     model.Id = item.Id;
                     shipperModels.Add(model);
                 }

@@ -1,0 +1,53 @@
+﻿@using Antra.CRMApp.Core.Model
+@model List<ProductResponseModel>
+
+<fieldset>
+<center>
+<h1 style="color:goldenrod" class="display-12"> <em>Product Details</em> </h1>
+</center>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <td>Vendor</td>
+            <td>Category</td>
+            <td>Product Name</td>
+            <th>Category</th>
+            <th>Unit In stock</th>
+            <th>Reorder level</th>
+            <th>Unit Price</th>
+            <th>Quantity per unit</th>
+            <th>Availability</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        
+        @{
+            foreach(var m in Model)
+            {
+                
+               <tr>
+               <td>@m.VendorId</td>
+               <td>@m.CategoryId</td>
+               <td>@m.Name</td>
+               <td>@m.CategoryId</td>
+               <td>@m.UnitsInStock</td>
+               <td>@m.ReorderLevel</td>
+               <td>@m.UnitPrice</td>
+               <td>@m.QuantityPerUnit</td>
+               <td>@m.Discontinued</td>
+               </tr> 
+               
+            }
+        }
+    </tbody>
+</table>
+ </fieldset>
+ <br /><br />
+ 
+<a asp-action="Index" asp-controller="Product"  class="btn btn-primary">Back</a>
+
+
+
+           

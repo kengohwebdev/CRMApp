@@ -65,5 +65,15 @@ namespace Antra.CRMApp.WebMVC.Controllers
             await vendorServiceAsync.DeleteVendorAsync(id);
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Detail()
+        {
+            var Collection = await vendorServiceAsync.GetAllAsync();
+            if (Collection != null)
+                return View(Collection);
+
+            List<VendorResponseModel> model = new List<VendorResponseModel>();
+            return View(model);
+        }
     }
 }

@@ -1,0 +1,33 @@
+﻿@using Antra.CRMApp.Core.Model
+@model List<CategoryModel>
+
+
+
+<h1>Category details</h1>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <td>Category</td>
+            <td>Description</td>
+        
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach(var m in Model)
+            {
+               <tr>
+               <td>@m.Name</td>
+               <td>@m.Description</td>
+             
+               </tr> 
+
+            }
+        }
+    </tbody>
+</table>
+
+
+
+<a asp-action="Index" asp-controller="Category"  class="btn btn-primary">Back</a>

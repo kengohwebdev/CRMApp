@@ -1,11 +1,19 @@
 ﻿@model IEnumerable<ProductResponseModel>
 
+
+ <br />
+
  <a asp-action="Create" asp-controller="Product" class="bg-success btn">Add Product</a>
-   <div class="row">
+
+ <br /><br />
+
+ <div class="row">
+  
    @foreach (var item in Model)
     {
     <partial name="_ProductCard" model="@item"></partial>
     }
 
  </div>
-        
+
+     

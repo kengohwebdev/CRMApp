@@ -65,5 +65,15 @@ namespace Antra.CRMApp.WebMVC.Controllers
             await shipperServiceAsync.DeleteShipperAsync(id);
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Detail()
+        {
+            var Collection = await shipperServiceAsync.GetAllAsync();
+            if (Collection != null)
+                return View(Collection);
+
+            List<ShipperModel> model = new List<ShipperModel>();
+            return View(model);
+        }
     }
 }

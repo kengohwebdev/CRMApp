@@ -67,5 +67,15 @@ namespace Antra.CRMApp.WebMVC.Controllers
             await categoryServiceAsync.DeleteCategoryAsync(id);
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Detail()
+        {
+            var Collection = await categoryServiceAsync.GetAllAsync();
+            if (Collection != null)
+                return View(Collection);
+
+            List<CategoryModel> model = new List<CategoryModel>();
+            return View(model);
+        }
     }
 }
