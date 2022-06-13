@@ -1,0 +1,33 @@
+﻿@using Antra.CRMApp.Core.Model
+@model List<CustomerResponseModel>
+
+
+
+<h1>Customer details</h1>
+<table class="table">
+    <thead>
+        <tr>   
+            <td>Title</td>
+            <td>Full Name</td>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>City</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach(var c in Model)
+            {
+               <tr>
+              
+               <td>@c.Title</td>
+               <td>@c.Name</td>
+               <td>@c.Phone</td>
+               <td>@c.Address</td>
+               <td>@c.City</td>
+               </tr> 
+
+            }
+        }
+    </tbody>
+</table>

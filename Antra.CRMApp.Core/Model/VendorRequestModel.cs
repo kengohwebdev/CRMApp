@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using Antra.CRMApp.Core.Entity;
 namespace Antra.CRMApp.Core.Model
 {
-    public class VendorModel
+    public class VendorRequestModel
     {
         public int Id { get; set; }
 
@@ -35,6 +35,7 @@ namespace Antra.CRMApp.Core.Model
 
         [Required(ErrorMessage = "Email is required")]
         [Column(TypeName = "varchar(100)")]
+        [Display(Name = "Enter Email")]
         public string EmailId { get; set; }
 
         [Required]

@@ -88,7 +88,6 @@ namespace Antra.CRMApp.WebMVC.Controllers
         }
 
 
-       
         public async Task<IActionResult> Detail()
         {
             var empCollection = await employeeServiceAsync.GetAllAsync();
@@ -98,5 +97,6 @@ namespace Antra.CRMApp.WebMVC.Controllers
             List<EmployeeResponseModel> model = new List<EmployeeResponseModel>();
             return View(model);
         }
+        
     }
 }

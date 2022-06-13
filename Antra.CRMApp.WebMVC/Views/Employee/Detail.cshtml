@@ -1,23 +1,20 @@
 ﻿@using Antra.CRMApp.Core.Model
-@model List<EmployeeRequestModel>
+@model List<EmployeeResponseModel>
 
 
 
-<h1>Employee index</h1>
+<h1>Employee details</h1>
 <table class="table">
     <thead>
         <tr>
             
             <td>Title</td>
             <td>TitleOfCourtesy</td>
-            <td>First Name</td>
-            <td>Last Name</td>
-            </tr>
-            <tr>
-            <th>City</th>
-            <th>Phone</th>
+            <td>Full Name</td>
             <th>Birthdate</th>
+            <th>Phone</th>
             <th>Address</th>
+            <th>City</th>
         </tr>
     </thead>
     <tbody>
@@ -28,14 +25,11 @@
               
                <td>@e.Title</td>
                <td>@e.TitleOfCourtesy</td>
-               <td>@e.FirstName</td>
-               <td>@e.LastName</td>
-               </tr>
-               <tr>
-               <td>@e.City</td>
-               <td>@e.Phone</td>
+               <td>@e.FullName</td>
                <td>@e.BirthDate</td>
+               <td>@e.Phone</td>
                <td>@e.Address</td>
+               <td>@e.City</td>
                </tr> 
 
             }

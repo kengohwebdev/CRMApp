@@ -24,7 +24,7 @@ namespace Antra.CRMApp.Infrastructure.Service
         {
             Product pro = new Product();
             pro.Name = product.Name;
-            pro.SupplierId = product.SupplierId;
+            pro.VendorId = product.VendorId;
             pro.CategoryId = product.CategoryId;
             pro.QuantityPerUnit = product.QuantityPerUnit;
             pro.UnitPrice = product.UnitPrice;
@@ -52,7 +52,7 @@ namespace Antra.CRMApp.Infrastructure.Service
                     ProductResponseModel model = new ProductResponseModel();
                     model.Id = item.Id;
                     model.Name = item.Name;
-                    model.SupplierId = item.SupplierId;
+                    model.VendorId = item.VendorId;
                     model.CategoryId = item.CategoryId;
                     model.QuantityPerUnit = item.QuantityPerUnit;
                     model.UnitPrice = item.UnitPrice;
@@ -75,7 +75,7 @@ namespace Antra.CRMApp.Infrastructure.Service
                 ProductResponseModel model = new ProductResponseModel();
                 model.Id = item.Id;
                 model.Name = item.Name;
-                model.SupplierId = item.SupplierId;
+                model.VendorId = item.VendorId;
                 model.CategoryId = item.CategoryId;
                 model.QuantityPerUnit = item.QuantityPerUnit;
                 model.UnitPrice = item.UnitPrice;
@@ -96,7 +96,7 @@ namespace Antra.CRMApp.Infrastructure.Service
                 ProductRequestModel model = new ProductRequestModel();
                 model.Id = item.Id;
                 model.Name = item.Name;
-                model.SupplierId = item.SupplierId;
+                model.VendorId = item.VendorId;
                 model.CategoryId = item.CategoryId;
                 model.QuantityPerUnit = item.QuantityPerUnit;
                 model.UnitPrice = item.UnitPrice;
@@ -114,7 +114,7 @@ namespace Antra.CRMApp.Infrastructure.Service
             Product pro = new Product();
             pro.Id = product.Id;
             pro.Name = product.Name;
-            pro.SupplierId = product.SupplierId;
+            pro.VendorId = product.VendorId;
             pro.CategoryId = product.CategoryId;
             pro.QuantityPerUnit = product.QuantityPerUnit;
             pro.UnitPrice = product.UnitPrice;

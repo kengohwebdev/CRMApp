@@ -16,7 +16,7 @@ namespace Antra.CRMApp.Core.Model
         public string Name { get; set; }
 
         [Required]
-        public int SupplierId { get; set; }
+        public int VendorId { get; set; }
         [Required]
         public int CategoryId { get; set; }
 

@@ -82,6 +82,17 @@ namespace Antra.CRMApp.WebMVC.Controllers
         }
 
 
+        public async Task<IActionResult> Detail()
+        {
+            var custCollection = await customerServiceAsync.GetAllAsync();
+            if (custCollection != null)
+                return View(custCollection);
+
+            List<CustomerResponseModel> model = new List<CustomerResponseModel>();
+            return View(model);
+        }
+
+
 
 
     }

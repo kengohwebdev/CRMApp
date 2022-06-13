@@ -18,7 +18,7 @@ namespace Antra.CRMApp.WebMVC.Controllers
             if (venCollection != null)
                 return View(venCollection);
 
-            List<VendorModel> model = new List<VendorModel>();
+            List<VendorRequestModel> model = new List<VendorRequestModel>();
             return View(model);
         }
 
@@ -29,7 +29,7 @@ namespace Antra.CRMApp.WebMVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(VendorModel model)
+        public async Task<IActionResult> Create(VendorRequestModel model)
         {
             if (ModelState.IsValid)
             {
@@ -48,7 +48,7 @@ namespace Antra.CRMApp.WebMVC.Controllers
             return View(venModel);
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(VendorModel model)
+        public async Task<IActionResult> Edit(VendorRequestModel model)
         {
             ViewBag.IsEdit = false;
             if (ModelState.IsValid)
