@@ -33,6 +33,10 @@ namespace Antra.CRMApp.Core.Model
         [Required]
         public bool Discontinued { get; set; }
 
-  
+        public VendorResponseModel Vendor { get; set; }
+
+        public CategoryModel Category { get; set; }
+
+
     }
 }

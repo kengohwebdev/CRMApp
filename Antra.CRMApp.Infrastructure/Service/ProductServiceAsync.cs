@@ -2,6 +2,7 @@
 using Antra.CRMApp.Core.Contract.Service;
 using Antra.CRMApp.Core.Entity;
 using Antra.CRMApp.Core.Model;
+using Antra.CRMApp.Infrastructure.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,16 @@ namespace Antra.CRMApp.Infrastructure.Service
     public class ProductServiceAsync : IProductServiceAsync
     {
         private readonly IProductRepositoryAsync productRepositoryAsync;
-        public ProductServiceAsync(IProductRepositoryAsync _productRepositoryAsync)
+        private readonly IVendorRepositoryAsync vendorRepositoryAsync;
+        private readonly ICategoryRepositoryAsync categoryRepositoryAsync;
+        public ProductServiceAsync(IProductRepositoryAsync _productRepositoryAsync, IVendorRepositoryAsync _vendorRepositoryAsync, ICategoryRepositoryAsync _categoryRepositoryAsync)
         {
-           productRepositoryAsync = _productRepositoryAsync;
+            productRepositoryAsync = _productRepositoryAsync;
+            vendorRepositoryAsync = _vendorRepositoryAsync;
+            categoryRepositoryAsync = _categoryRepositoryAsync;
         }
 
-       
+
 
         public async Task<int> AddProductAsync(ProductRequestModel product)
         {
@@ -30,7 +35,7 @@ namespace Antra.CRMApp.Infrastructure.Service
             pro.UnitPrice = product.UnitPrice;
             pro.UnitsInStock = product.UnitsInStock;
             pro.UnitsOnOrder = product.UnitsOnOrder;
-            pro.ReorderLevel= product.ReorderLevel;
+            pro.ReorderLevel = product.ReorderLevel;
             pro.Discontinued = product.Discontinued;
             return await productRepositoryAsync.InsertAsync(pro);
         }
@@ -60,6 +65,10 @@ namespace Antra.CRMApp.Infrastructure.Service
                     model.UnitsOnOrder = item.UnitsOnOrder;
                     model.ReorderLevel = item.ReorderLevel;
                     model.Discontinued = item.Discontinued;
+                    var v = await vendorRepositoryAsync.GetByIdAsync(item.VendorId);
+                    model.Vendor = new VendorResponseModel() { Name = v.Name };
+                    var c = await categoryRepositoryAsync.GetByIdAsync(item.CategoryId);
+                    model.Category = new CategoryModel() { Name = c.Name };
                     result.Add(model);
                 }
                 return result;
@@ -125,6 +134,30 @@ namespace Antra.CRMApp.Infrastructure.Service
             return await productRepositoryAsync.UpdateAsync(pro);
         }
 
-   
+
+        public async Task<IEnumerable<ProductResponseModel>> GetTop10ProductsInStockAsync()
+        {
+            var result = await productRepositoryAsync.GetTop10ProductsInStocksAsync();
+            List<ProductResponseModel> lstProductResponse = new List<ProductResponseModel>();
+            foreach (var product in result)
+            {
+                ProductResponseModel pro = new ProductResponseModel();
+                pro.Id = product.Id;
+                pro.Name = product.Name;
+                pro.VendorId = product.VendorId;
+                pro.CategoryId = product.CategoryId;
+                pro.QuantityPerUnit = product.QuantityPerUnit;
+                pro.UnitPrice = product.UnitPrice;
+                pro.UnitsInStock = product.UnitsInStock;
+                pro.UnitsOnOrder = product.UnitsOnOrder;
+                pro.ReorderLevel = product.ReorderLevel;
+                pro.Discontinued = product.Discontinued;
+                lstProductResponse.Add(pro);
+
+            }
+            return lstProductResponse;
+        }
+
+
     }
 }

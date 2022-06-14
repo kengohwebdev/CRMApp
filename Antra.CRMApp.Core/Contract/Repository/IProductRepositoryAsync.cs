@@ -9,5 +9,7 @@ namespace Antra.CRMApp.Core.Contract.Repository
 {
     public interface IProductRepositoryAsync:IRepositoryAsync<Product>
     {
+
+        Task<IEnumerable<Product>> GetTop10ProductsInStocksAsync();
     }
 }

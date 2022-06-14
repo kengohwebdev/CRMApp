@@ -1,6 +1,7 @@
 ﻿@using Antra.CRMApp.Core.Model
 @model List<ProductResponseModel>
 
+
 <fieldset>
 <center>
 <h1 style="color:goldenrod" class="display-12"> <em>Product Details</em> </h1>
@@ -28,8 +29,8 @@
             {
                 
                <tr>
-               <td>@m.VendorId</td>
-               <td>@m.CategoryId</td>
+               <td>@m.Vendor.Name</td>
+               <td>@m.Category.Name</td>
                <td>@m.Name</td>
                <td>@m.CategoryId</td>
                <td>@m.UnitsInStock</td>
@@ -50,4 +51,3 @@
 
 
 
-           
