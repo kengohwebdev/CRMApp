@@ -53,20 +53,20 @@ if (app.Environment.IsDevelopment())
 }
 
 
-app.UseExceptionHandler(option =>
-{
-    option.Run(
-        async context =>
-        {
-            var ex = context.Features.Get<IExceptionHandlerFeature>();
-            if (ex != null)
-            {
-                await context.Response.WriteAsync(ex.Error.Message);
-            }
-        }
-        );
-}
-    );
+//app.UseExceptionHandler(option =>
+//{
+//    option.Run(
+//        async context =>
+//        {
+//            var ex = context.Features.Get<IExceptionHandlerFeature>();
+//            if (ex != null)
+//            {
+//                await context.Response.WriteAsync(ex.Error.Message);
+//            }
+//        }
+//        );
+//}
+//    );
 
 
 app.UseSerilogRequestLogging();
