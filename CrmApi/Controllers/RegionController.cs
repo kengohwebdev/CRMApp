@@ -17,6 +17,7 @@ namespace Antra.CrmAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
+            // throw new Exception("custom exception");
             return Ok(await regionServiceAsync.GetAllAsync());
         }
 
@@ -54,7 +55,10 @@ namespace Antra.CrmAPI.Controllers
         {
             var result = await regionServiceAsync.DeleteRegionAsync(id);
             if (result > 0)
-                return Ok("Region Deleted successfully");
+            {
+                var response = new { Message = "Region Deleted Successfully" };
+                return Ok(response);
+            }
             return BadRequest();
         }
     }

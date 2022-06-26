@@ -13,9 +13,11 @@ namespace Antra.CRMApp.Infrastructure.Service
     public class CustomerServiceAsync : ICustomerServiceAsync
     {
         private readonly ICustomerRepositoryAsync customerRepositoryAsync;
-        public CustomerServiceAsync(ICustomerRepositoryAsync _cust)
+        private readonly IRegionRepositoryAsync regionRepositoryAsync;
+        public CustomerServiceAsync(ICustomerRepositoryAsync _cust, IRegionRepositoryAsync regionRepositoryAsync)
         {
             customerRepositoryAsync = _cust;
+            this.regionRepositoryAsync = regionRepositoryAsync; 
         }
 
         public async Task<int> AddCustomerAsync(CustomerRequestModel customer)
@@ -54,7 +56,15 @@ namespace Antra.CRMApp.Infrastructure.Service
                     model.Address = item.Address;
                     model.Title = item.Title;
                     model.Phone = item.Phone;
-                
+                    model.PostalCode = item.PostalCode;
+                    model.Country = item.Country;
+
+                    var c = await regionRepositoryAsync.GetByIdAsync(item.RegionId);
+                    model.Region = new RegionModel() { Name = c.Name };
+                    model.RegionName = c.Name;
+
+
+
                     result.Add(model);
                 }
                 return result;

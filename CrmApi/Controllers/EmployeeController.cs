@@ -59,7 +59,10 @@ namespace Antra.CrmAPI.Controllers
         {
             var result = await employeeServiceAsync.DeleteEmployeeAsync(id);
             if (result > 0)
-                return Ok("Employee Deleted successfully");
+            {
+                var response = new { Message = "Employee Deleted Successfully" };
+                return Ok(response);
+            }
             return BadRequest();
         }
     }

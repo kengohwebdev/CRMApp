@@ -17,6 +17,10 @@ namespace Antra.CRMApp.Core.Model
         public string EmailId { get; set; }
         public bool IsActive { get; set; }
 
+        public RegionModel Region { get; set; }
+
+        public string RegionName { get; set; }
+
 
     }
 }

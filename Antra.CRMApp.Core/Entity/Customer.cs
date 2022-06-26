@@ -24,8 +24,7 @@ namespace Antra.CRMApp.Core.Entity
         public string City { get; set; }
         public int RegionId { get; set; }
         public int PostalCode { get; set; }
-        [Required, Column(TypeName = "varchar")]
-        [MaxLength(20)]
+  
         public string Country { get; set; }
         [Required, Column(TypeName = "varchar")]
         [MaxLength(15)]

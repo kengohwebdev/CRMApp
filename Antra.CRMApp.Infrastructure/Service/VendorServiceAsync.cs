@@ -13,12 +13,14 @@ namespace Antra.CRMApp.Infrastructure.Service
     public class VendorServiceAsync : IVendorServiceAsync
     {
         private readonly IVendorRepositoryAsync vendorRepositoryAsync;
-        public VendorServiceAsync(IVendorRepositoryAsync _vendorRepositoryAsync)
+        private readonly IRegionRepositoryAsync regionRepositoryAsync;
+        public VendorServiceAsync(IVendorRepositoryAsync _vendorRepositoryAsync, IRegionRepositoryAsync _regionRepositoryAsync)
         {
             vendorRepositoryAsync = _vendorRepositoryAsync;
+            regionRepositoryAsync = _regionRepositoryAsync;
         }
 
-      
+
         public async Task<int> AddVendorAsync(VendorRequestModel model)
         {
             Vendor ven = new Vendor();
@@ -39,6 +41,8 @@ namespace Antra.CRMApp.Infrastructure.Service
             var collection = await vendorRepositoryAsync.GetAllAsync();
             if (collection != null)
             {
+
+
                 List<VendorResponseModel> vendorModels = new List<VendorResponseModel>();
                 foreach (var item in collection)
                 {
@@ -52,6 +56,11 @@ namespace Antra.CRMApp.Infrastructure.Service
                     model.Mobile =  item.Mobile;
                     model.EmailId = item.EmailId;
                     model.RegionId = item.RegionId;
+
+                    var r = await regionRepositoryAsync.GetByIdAsync(item.RegionId);
+                    model.Region = new RegionModel() { Name = r.Name };
+                    model.RegionName = r.Name;
+
                     vendorModels.Add(model);
                 }
                 return vendorModels;

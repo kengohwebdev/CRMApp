@@ -59,7 +59,10 @@ namespace CrmApi.Controllers
         {
             var result = await customerServiceAsync.DeleteCustomerAsync(id);
             if (result > 0)
-                return Ok("Customer Deleted successfully");
+            {
+                var response = new { Message = "Customer Deleted Successfully" };
+                return Ok(response);
+            }
             return BadRequest();
         }
     }

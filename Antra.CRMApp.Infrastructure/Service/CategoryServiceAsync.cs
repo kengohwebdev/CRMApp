@@ -13,9 +13,11 @@ namespace Antra.CRMApp.Infrastructure.Service
     public class CategoryServiceAsync : ICategoryServiceAsync
     {
         private readonly ICategoryRepositoryAsync categoryRepositoryAsync;
+     
         public CategoryServiceAsync(ICategoryRepositoryAsync _categoryRepositoryAsync)
         {
             categoryRepositoryAsync = _categoryRepositoryAsync;
+    
         }
 
         public async Task<int> AddCategoryAsync(CategoryModel category)

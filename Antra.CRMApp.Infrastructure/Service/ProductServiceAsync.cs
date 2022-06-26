@@ -67,8 +67,10 @@ namespace Antra.CRMApp.Infrastructure.Service
                     model.Discontinued = item.Discontinued;
                     var v = await vendorRepositoryAsync.GetByIdAsync(item.VendorId);
                     model.Vendor = new VendorResponseModel() { Name = v.Name };
+                    model.VendorName = v.Name;
                     var c = await categoryRepositoryAsync.GetByIdAsync(item.CategoryId);
                     model.Category = new CategoryModel() { Name = c.Name };
+                    model.CategoryName = c.Name;
                     result.Add(model);
                 }
                 return result;

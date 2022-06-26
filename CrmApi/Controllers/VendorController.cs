@@ -59,7 +59,10 @@ namespace CrmApi.Controllers
         {
             var result = await vendorServiceAsync.DeleteVendorAsync(id);
             if (result > 0)
-                return Ok("Vendor Deleted successfully");
+            {
+                var response = new { Message = "Vendor Deleted Successfully" };
+                return Ok(response);
+            }
             return BadRequest();
         }
     }

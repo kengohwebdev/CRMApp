@@ -37,6 +37,9 @@ namespace Antra.CRMApp.Core.Model
 
         public CategoryModel Category { get; set; }
 
+        public string VendorName { get; set; }
+
+        public string CategoryName { get; set; }
 
     }
 }

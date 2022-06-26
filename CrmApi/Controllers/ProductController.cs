@@ -59,7 +59,10 @@ namespace CrmApi.Controllers
         {
             var result = await productServiceAsync.DeleteProductAsync(id);
             if (result > 0)
-                return Ok("Product Deleted successfully");
+            {
+                var response = new { Message = "Product Deleted Successfully" };
+                return Ok(response);
+            }
             return BadRequest();
         }
     }

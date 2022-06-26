@@ -17,5 +17,12 @@ namespace Antra.CRMApp.Core.Model
         public string Address { get; set; }
         public string Title { get; set; }
         public string Phone { get; set; }
+
+        public string Country { get; set; }
+
+        public RegionModel Region { get; set; }
+        public int PostalCode { get; set; }
+
+        public string RegionName { get; set; }
     }
 }

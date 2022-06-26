@@ -59,7 +59,10 @@ namespace CrmApi.Controllers
         {
             var result = await shipperServiceAsync.DeleteShipperAsync(id);
             if (result > 0)
-                return Ok("Shipper Deleted successfully");
+            {
+                var response = new { Message = "Shipper Deleted Successfully" };
+                return Ok(response);
+            }
             return BadRequest();
         }
     }

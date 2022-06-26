@@ -61,7 +61,10 @@ namespace CrmApi.Controllers
         {
             var result = await categoryServiceAsync.DeleteCategoryAsync(id);
             if (result > 0)
-                return Ok("Category Deleted successfully");
+            {
+                var response = new { Message = "Category Deleted Successfully" };
+                return Ok(response);
+            }
             return BadRequest();
         }
     }
