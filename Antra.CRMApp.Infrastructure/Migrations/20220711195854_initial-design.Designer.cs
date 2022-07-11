@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Antra.CRMApp.Infrastructure.Migrations
 {
     [DbContext(typeof(CrmDbContext))]
-    [Migration("20220626164855_identityUserAdded")]
-    partial class identityUserAdded
+    [Migration("20220711195854_initial-design")]
+    partial class initialdesign
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

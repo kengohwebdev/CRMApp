@@ -1,5 +1,6 @@
 ﻿using Antra.CRMApp.Core.Contract.Service;
 using Antra.CRMApp.Core.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace Antra.CrmAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class RegionController : ControllerBase
     {
         private readonly IRegionServiceAsync regionServiceAsync;

@@ -1,11 +1,10 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Antra.CRMApp.Infrastructure.Migrations
 {
-    public partial class updatedata : Migration
+    public partial class initialdesign : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

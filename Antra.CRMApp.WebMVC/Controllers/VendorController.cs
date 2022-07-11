@@ -1,15 +1,18 @@
 ﻿using Antra.CRMApp.Core.Contract.Service;
 using Antra.CRMApp.Core.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Antra.CRMApp.WebMVC.Controllers
 {
     public class VendorController : Controller
     {
         private readonly IVendorServiceAsync vendorServiceAsync;
-        public VendorController(IVendorServiceAsync vser)
+        private readonly IRegionServiceAsync regionServiceAsync;
+        public VendorController(IVendorServiceAsync vser, IRegionServiceAsync regionServiceAsync)
         {
             vendorServiceAsync = vser;
+            this.regionServiceAsync = regionServiceAsync;
         }
 
         public async Task<IActionResult> Index()
@@ -25,6 +28,8 @@ namespace Antra.CRMApp.WebMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
+            var collection = await regionServiceAsync.GetAllAsync();
+            ViewBag.Regions = new SelectList(collection, "Id", "Name");
             return View();
         }
 
@@ -36,6 +41,8 @@ namespace Antra.CRMApp.WebMVC.Controllers
                 await vendorServiceAsync.AddVendorAsync(model);
                 return RedirectToAction("Index");
             }
+            var collection = await regionServiceAsync.GetAllAsync();
+            ViewBag.Regions = new SelectList(collection, "Id", "Name");
             return View(model);
         }
 
@@ -45,12 +52,18 @@ namespace Antra.CRMApp.WebMVC.Controllers
         {
             ViewBag.IsEdit = false;
             var venModel = await vendorServiceAsync.GetVendorForEditAsync(id);
+
+            var collection = await regionServiceAsync.GetAllAsync();
+            ViewBag.Regions = new SelectList(collection, "Id", "Name");
             return View(venModel);
         }
         [HttpPost]
         public async Task<IActionResult> Edit(VendorRequestModel model)
         {
             ViewBag.IsEdit = false;
+
+            var collection = await regionServiceAsync.GetAllAsync();
+            ViewBag.Regions = new SelectList(collection, "Id", "Name");
             if (ModelState.IsValid)
             {
                 await vendorServiceAsync.UpdateVendorAsync(model);

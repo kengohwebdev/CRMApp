@@ -30,10 +30,12 @@
         <div class="row">
             <div class="col">
                 <div class="mb-4">
-                    <label asp-for="RegionId"></label>
-                    <input asp-for="RegionId" class="form-control"/>
-                    <span asp-validation-for="RegionId" class="text-danger"></span>
-                </div>
+                <label asp-for="RegionId"></label>
+                <select asp-for="RegionId" class="form-control" asp-items="ViewBag.Regions" >
+                <option value="RegionId">Select a region</option>   
+                </select>
+                <span asp-validation-for="RegionId"></span>
+            </div>
             </div>
             <div class="col">
                 <div class="mb-4">
